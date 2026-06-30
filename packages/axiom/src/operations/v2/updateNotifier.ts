@@ -21,7 +21,7 @@ export interface UpdateNotifierInput {
     };
     discord?: { discordChannel?: string; discordToken?: string };
     discordWebhook?: { discordWebhookUrl?: string };
-    email?: { emails?: string[] };
+    email?: { emails?: ReadonlyArray<string> };
     microsoftTeams?: { microsoftTeamsUrl?: string };
     opsgenie?: { apiKey?: string | Redacted.Redacted<string>; isEU?: boolean };
     pagerduty?: { routingKey?: string; token?: string };
@@ -111,7 +111,7 @@ export interface UpdateNotifierOutput {
     };
     discord?: { discordChannel?: string; discordToken?: string };
     discordWebhook?: { discordWebhookUrl?: string };
-    email?: { emails?: string[] };
+    email?: { emails?: ReadonlyArray<string> };
     microsoftTeams?: { microsoftTeamsUrl?: string };
     opsgenie?: { apiKey?: Redacted.Redacted<string>; isEU?: boolean };
     pagerduty?: { routingKey?: string; token?: string };

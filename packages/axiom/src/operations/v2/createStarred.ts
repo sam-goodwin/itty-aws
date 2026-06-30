@@ -13,11 +13,11 @@ export interface CreateStarredInput {
     apl: string;
     cursor?: string;
     defaultLimit?: number;
-    defaultOrder?: { desc?: boolean; field?: string }[];
+    defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
     endTime?: string;
     includeCursor?: boolean;
     includeCursorField?: boolean;
-    libraries?: string[];
+    libraries?: ReadonlyArray<string>;
     queryOptions?: {
       disableCache?: boolean;
       disableStats?: boolean;
@@ -109,11 +109,11 @@ export interface CreateStarredOutput {
     apl: string;
     cursor?: string;
     defaultLimit?: number;
-    defaultOrder?: { desc?: boolean; field?: string }[];
+    defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
     endTime?: string;
     includeCursor?: boolean;
     includeCursorField?: boolean;
-    libraries?: string[];
+    libraries?: ReadonlyArray<string>;
     queryOptions?: {
       disableCache?: boolean;
       disableStats?: boolean;

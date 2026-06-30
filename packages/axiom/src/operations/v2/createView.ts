@@ -6,7 +6,7 @@ import { UnprocessableEntity } from "../../errors.ts";
 // Input Schema
 export interface CreateViewInput {
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;
@@ -26,7 +26,7 @@ export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export interface CreateViewOutput {
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;

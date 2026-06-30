@@ -18,7 +18,7 @@ export interface UpdateMonitorInput {
   intervalMinutes?: number;
   mplQuery?: string;
   name: string;
-  notifierIds?: string[];
+  notifierIds?: ReadonlyArray<string>;
   notifyByGroup?: boolean;
   notifyEveryRun?: boolean;
   operator?:
@@ -92,7 +92,7 @@ export interface UpdateMonitorOutput {
   intervalMinutes?: number;
   mplQuery?: string;
   name: string;
-  notifierIds?: string[];
+  notifierIds?: ReadonlyArray<string>;
   notifyByGroup?: boolean;
   notifyEveryRun?: boolean;
   operator?:

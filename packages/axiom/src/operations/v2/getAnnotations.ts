@@ -17,8 +17,8 @@ export const GetAnnotationsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetAnnotationsInput>;
 
 // Output Schema
-export type GetAnnotationsOutput = {
-  datasets: string[];
+export type GetAnnotationsOutput = ReadonlyArray<{
+  datasets: ReadonlyArray<string>;
   description?: string;
   endTime?: string | null;
   id: string;
@@ -26,7 +26,7 @@ export type GetAnnotationsOutput = {
   title?: string;
   type: string;
   url?: string;
-}[];
+}>;
 export const GetAnnotationsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     datasets: Schema.Array(Schema.String),

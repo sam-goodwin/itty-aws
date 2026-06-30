@@ -9,12 +9,12 @@ export const GetUsersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 ) as unknown as Schema.Codec<GetUsersInput>;
 
 // Output Schema
-export type GetUsersOutput = {
+export type GetUsersOutput = ReadonlyArray<{
   email: string;
   id: string;
   name: string;
   role?: { id: string; name: string };
-}[];
+}>;
 export const GetUsersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     email: Schema.String,

@@ -13,7 +13,7 @@ export const GetNotifiersInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetNotifiersInput>;
 
 // Output Schema
-export type GetNotifiersOutput = {
+export type GetNotifiersOutput = ReadonlyArray<{
   createdAt?: string;
   createdBy?: string;
   disabledUntil?: string;
@@ -27,7 +27,7 @@ export type GetNotifiersOutput = {
     };
     discord?: { discordChannel?: string; discordToken?: string };
     discordWebhook?: { discordWebhookUrl?: string };
-    email?: { emails?: string[] };
+    email?: { emails?: ReadonlyArray<string> };
     microsoftTeams?: { microsoftTeamsUrl?: string };
     opsgenie?: { apiKey?: Redacted.Redacted<string>; isEU?: boolean };
     pagerduty?: { routingKey?: string; token?: string };
@@ -36,7 +36,7 @@ export type GetNotifiersOutput = {
   };
   updatedAt?: string;
   id?: string;
-}[];
+}>;
 export const GetNotifiersOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     createdAt: Schema.optional(Schema.String),

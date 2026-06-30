@@ -6,7 +6,7 @@ import { BadRequest, NotFound, UnprocessableEntity } from "../../errors.ts";
 // Input Schema
 export interface UpdateAnnotationInput {
   id: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   endTime?: string;
   time?: string;
@@ -29,7 +29,7 @@ export const UpdateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 // Output Schema
 export interface UpdateAnnotationOutput {
-  datasets: string[];
+  datasets: ReadonlyArray<string>;
   description?: string;
   endTime?: string | null;
   id: string;

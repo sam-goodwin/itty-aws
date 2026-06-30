@@ -7,7 +7,7 @@ import { NotFound, UnprocessableEntity } from "../../errors.ts";
 export interface UpdateViewInput {
   id: string;
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;
@@ -28,7 +28,7 @@ export const UpdateViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export interface UpdateViewOutput {
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;

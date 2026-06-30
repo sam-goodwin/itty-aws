@@ -11,14 +11,14 @@ export const ListGroupsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<ListGroupsInput>;
 
 // Output Schema
-export type ListGroupsOutput = {
+export type ListGroupsOutput = ReadonlyArray<{
   description?: string;
   isManaged?: boolean;
-  members?: string[];
+  members?: ReadonlyArray<string>;
   name: string;
-  roles?: string[];
+  roles?: ReadonlyArray<string>;
   id: string;
-}[];
+}>;
 export const ListGroupsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     description: Schema.optional(Schema.String),

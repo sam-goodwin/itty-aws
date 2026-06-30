@@ -14,7 +14,7 @@ export const GetMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetMapFieldsInput>;
 
 // Output Schema
-export type GetMapFieldsOutput = string[];
+export type GetMapFieldsOutput = ReadonlyArray<string>;
 export const GetMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.String,
 ) as unknown as Schema.Codec<GetMapFieldsOutput>;

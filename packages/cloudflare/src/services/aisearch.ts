@@ -1524,6 +1524,174 @@ const ListInstancesResponseResultInfo =
     ),
   ) as unknown as Schema.Codec<ListInstancesResponseResultInfo>;
 
+interface CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions {
+  depth?: number | null;
+  includeExternalLinks?: boolean | null;
+  includeSubdomains?: boolean | null;
+  maxAge?: number | null;
+  source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+}
+const CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      depth: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      includeExternalLinks: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      includeSubdomains: Schema.optional(
+        Schema.Union([Schema.Boolean, Schema.Null]),
+      ),
+      maxAge: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+      source: Schema.optional(
+        Schema.Union([
+          Schema.Union([
+            Schema.Literals(["all", "sitemaps", "links"]),
+            Schema.String,
+          ]),
+          Schema.Null,
+        ]),
+      ),
+    }).pipe(
+      Schema.encodeKeys({
+        depth: "depth",
+        includeExternalLinks: "include_external_links",
+        includeSubdomains: "include_subdomains",
+        maxAge: "max_age",
+        source: "source",
+      }),
+    ),
+  ) as unknown as Schema.Codec<CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions>;
+
+interface CreateInstanceRequestSourceParamsWebCrawlerStoreOptions {
+  storageId: string;
+  r2Jurisdiction?: string | null;
+  storageType?: string | null;
+}
+const CreateInstanceRequestSourceParamsWebCrawlerStoreOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      storageId: Schema.String,
+      r2Jurisdiction: Schema.optional(
+        Schema.Union([Schema.String, Schema.Null]),
+      ),
+      storageType: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }).pipe(
+      Schema.encodeKeys({
+        storageId: "storage_id",
+        r2Jurisdiction: "r2_jurisdiction",
+        storageType: "storage_type",
+      }),
+    ),
+  ) as unknown as Schema.Codec<CreateInstanceRequestSourceParamsWebCrawlerStoreOptions>;
+
+interface WebCrawler2 {
+  parseOptions?: {
+    contentSelector?: { path: string; selector: string }[] | null;
+    includeHeaders?: Record<string, unknown> | null;
+    includeImages?: boolean | null;
+    specificSitemaps?: string[] | null;
+    useBrowserRendering?: boolean | null;
+  } | null;
+  parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+  crawlOptions?: {
+    depth?: number | null;
+    includeExternalLinks?: boolean | null;
+    includeSubdomains?: boolean | null;
+    maxAge?: number | null;
+    source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+  } | null;
+  storeOptions?: {
+    storageId: string;
+    r2Jurisdiction?: string | null;
+    storageType?: string | null;
+  } | null;
+}
+const WebCrawler2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    parseOptions: Schema.optional(Schema.Union([ParseOptions, Schema.Null])),
+    parseType: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["sitemap", "crawl", "feed-rss"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    crawlOptions: Schema.optional(
+      Schema.Union([
+        CreateInstanceRequestSourceParamsWebCrawlerCrawlOptions,
+        Schema.Null,
+      ]),
+    ),
+    storeOptions: Schema.optional(
+      Schema.Union([
+        CreateInstanceRequestSourceParamsWebCrawlerStoreOptions,
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      parseOptions: "parse_options",
+      parseType: "parse_type",
+      crawlOptions: "crawl_options",
+      storeOptions: "store_options",
+    }),
+  ),
+) as unknown as Schema.Codec<WebCrawler2>;
+
+interface SourceParams2 {
+  /** List of path patterns to exclude. Uses micromatch glob syntax: \ matches within a path segment,  matches across path segments (e.g., /admin/  matches /admin/users and /admin/settings/advanced) */
+  excludeItems?: string[] | null;
+  /** List of path patterns to include. Uses micromatch glob syntax: \ matches within a path segment,  matches across path segments (e.g., /blog/  matches /blog/post and /blog/2024/post) */
+  includeItems?: string[] | null;
+  prefix?: string | null;
+  r2Jurisdiction?: string | null;
+  webCrawler?: {
+    parseOptions?: {
+      contentSelector?: { path: string; selector: string }[] | null;
+      includeHeaders?: Record<string, unknown> | null;
+      includeImages?: boolean | null;
+      specificSitemaps?: string[] | null;
+      useBrowserRendering?: boolean | null;
+    } | null;
+    parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+    crawlOptions?: {
+      depth?: number | null;
+      includeExternalLinks?: boolean | null;
+      includeSubdomains?: boolean | null;
+      maxAge?: number | null;
+      source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+    } | null;
+    storeOptions?: {
+      storageId: string;
+      r2Jurisdiction?: string | null;
+      storageType?: string | null;
+    } | null;
+  } | null;
+}
+const SourceParams2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    excludeItems: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    includeItems: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    prefix: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    r2Jurisdiction: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    webCrawler: Schema.optional(Schema.Union([WebCrawler2, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      excludeItems: "exclude_items",
+      includeItems: "include_items",
+      prefix: "prefix",
+      r2Jurisdiction: "r2_jurisdiction",
+      webCrawler: "web_crawler",
+    }),
+  ),
+) as unknown as Schema.Codec<SourceParams2>;
+
 interface R2 {
   metadataSizeBytes: number;
   objectCount: number;
@@ -3016,7 +3184,19 @@ export interface CreateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "crawl" | (string & {});
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {});
+      crawlOptions?: {
+        depth?: number;
+        includeExternalLinks?: boolean;
+        includeSubdomains?: boolean;
+        maxAge?: number;
+        source?: "all" | "sitemaps" | "links" | (string & {});
+      };
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string;
+        storageType?: string;
+      };
     };
   } | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
@@ -3160,7 +3340,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       syncInterval: Schema.optional(Schema.Number),
       tokenId: Schema.optional(Schema.String),
       type: Schema.optional(
@@ -3374,7 +3554,19 @@ export interface CreateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -3542,7 +3734,7 @@ export const CreateInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -3793,7 +3985,19 @@ export interface UpdateInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "crawl" | (string & {});
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {});
+      crawlOptions?: {
+        depth?: number;
+        includeExternalLinks?: boolean;
+        includeSubdomains?: boolean;
+        maxAge?: number;
+        source?: "all" | "sitemaps" | "links" | (string & {});
+      };
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string;
+        storageType?: string;
+      };
     };
   } | null;
   /** Body param */
@@ -3976,7 +4180,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       summarization: Schema.optional(Schema.Boolean),
       summarizationModel: Schema.optional(
         Schema.Union([
@@ -4231,7 +4435,19 @@ export interface UpdateInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -4399,7 +4615,7 @@ export const UpdateInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -4665,7 +4881,19 @@ export interface DeleteInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -4833,7 +5061,7 @@ export const DeleteInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -5092,7 +5320,19 @@ export interface ReadInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -5260,7 +5500,7 @@ export const ReadInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -6789,7 +7029,19 @@ export interface CreateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "crawl" | (string & {});
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {});
+      crawlOptions?: {
+        depth?: number;
+        includeExternalLinks?: boolean;
+        includeSubdomains?: boolean;
+        maxAge?: number;
+        source?: "all" | "sitemaps" | "links" | (string & {});
+      };
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string;
+        storageType?: string;
+      };
     };
   } | null;
   /** Body param: Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
@@ -6934,7 +7186,7 @@ export const CreateNamespaceInstanceRequest =
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       syncInterval: Schema.optional(Schema.Number),
       tokenId: Schema.optional(Schema.String),
       type: Schema.optional(
@@ -7148,7 +7400,19 @@ export interface CreateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -7316,7 +7580,7 @@ export const CreateNamespaceInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -7574,7 +7838,19 @@ export interface UpdateNamespaceInstanceRequest {
         specificSitemaps?: string[];
         useBrowserRendering?: boolean;
       };
-      parseType?: "sitemap" | "crawl" | (string & {});
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {});
+      crawlOptions?: {
+        depth?: number;
+        includeExternalLinks?: boolean;
+        includeSubdomains?: boolean;
+        maxAge?: number;
+        source?: "all" | "sitemaps" | "links" | (string & {});
+      };
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string;
+        storageType?: string;
+      };
     };
   } | null;
   /** Body param */
@@ -7758,7 +8034,7 @@ export const UpdateNamespaceInstanceRequest =
       rewriteQuery: Schema.optional(Schema.Boolean),
       scoreThreshold: Schema.optional(Schema.Number),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       summarization: Schema.optional(Schema.Boolean),
       summarizationModel: Schema.optional(
         Schema.Union([
@@ -8013,7 +8289,19 @@ export interface UpdateNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -8181,7 +8469,7 @@ export const UpdateNamespaceInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8453,7 +8741,19 @@ export interface DeleteNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -8621,7 +8921,7 @@ export const DeleteNamespaceInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8889,7 +9189,19 @@ export interface ReadNamespaceInstanceResponse {
         specificSitemaps?: string[] | null;
         useBrowserRendering?: boolean | null;
       } | null;
-      parseType?: "sitemap" | "crawl" | (string & {}) | null;
+      parseType?: "sitemap" | "crawl" | "feed-rss" | (string & {}) | null;
+      crawlOptions?: {
+        depth?: number | null;
+        includeExternalLinks?: boolean | null;
+        includeSubdomains?: boolean | null;
+        maxAge?: number | null;
+        source?: "all" | "sitemaps" | "links" | (string & {}) | null;
+      } | null;
+      storeOptions?: {
+        storageId: string;
+        r2Jurisdiction?: string | null;
+        storageType?: string | null;
+      } | null;
     } | null;
   } | null;
   status?: string | null;
@@ -9057,7 +9369,7 @@ export const ReadNamespaceInstanceResponse =
         Schema.Union([Schema.Number, Schema.Null]),
       ),
       source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      sourceParams: Schema.optional(Schema.Union([SourceParams, Schema.Null])),
+      sourceParams: Schema.optional(Schema.Union([SourceParams2, Schema.Null])),
       status: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       syncInterval: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
       tokenId: Schema.optional(Schema.Union([Schema.String, Schema.Null])),

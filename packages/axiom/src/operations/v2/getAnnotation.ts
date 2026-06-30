@@ -15,7 +15,7 @@ export const GetAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 // Output Schema
 export interface GetAnnotationOutput {
-  datasets: string[];
+  datasets: ReadonlyArray<string>;
   description?: string;
   endTime?: string | null;
   id: string;

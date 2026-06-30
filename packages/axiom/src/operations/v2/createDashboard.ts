@@ -9,7 +9,7 @@ export interface CreateDashboardInput {
     name: string;
     owner: string;
     description?: string;
-    charts: (
+    charts: ReadonlyArray<
       | { id: string; type: "TimeSeries"; name?: string; query: unknown }
       | { id: string; type: "Heatmap"; name?: string; query: unknown }
       | {
@@ -18,7 +18,7 @@ export interface CreateDashboardInput {
           name?: string;
           query: unknown;
           tableSettings?: {
-            columns?: unknown[];
+            columns?: ReadonlyArray<unknown>;
             settings?: {
               fontSize?: string;
               highlightSeverity?: boolean;
@@ -39,7 +39,7 @@ export interface CreateDashboardInput {
           name?: string;
           query: unknown;
           tableSettings?: {
-            columns?: unknown[];
+            columns?: ReadonlyArray<unknown>;
             settings?: {
               fontSize?: string;
               highlightSeverity?: boolean;
@@ -116,7 +116,7 @@ export interface CreateDashboardInput {
           id: string;
           type: "MonitorList";
           name?: string;
-          selectedMonitors: string[];
+          selectedMonitors: ReadonlyArray<string>;
           columns: {
             status: boolean;
             history: boolean;
@@ -129,13 +129,13 @@ export interface CreateDashboardInput {
           id: string;
           type: "SmartFilter";
           name?: string;
-          filters: unknown[];
+          filters: ReadonlyArray<unknown>;
           logo?: string;
           logoDark?: string;
         }
       | { id: string; type: "Spacer"; name?: string }
-    )[];
-    layout: {
+    >;
+    layout: ReadonlyArray<{
       i: string;
       x: number;
       y: number | null;
@@ -146,7 +146,7 @@ export interface CreateDashboardInput {
       maxW?: number;
       maxH?: number;
       static?: boolean;
-    }[];
+    }>;
     refreshTime: 15 | 60 | 300;
     schemaVersion: 2;
     against?:
@@ -234,7 +234,7 @@ export interface CreateDashboardOutput {
       name: string;
       owner: string;
       description?: string;
-      charts: (
+      charts: ReadonlyArray<
         | { id: string; type: "TimeSeries"; name?: string; query: unknown }
         | { id: string; type: "Heatmap"; name?: string; query: unknown }
         | {
@@ -243,7 +243,7 @@ export interface CreateDashboardOutput {
             name?: string;
             query: unknown;
             tableSettings?: {
-              columns?: unknown[];
+              columns?: ReadonlyArray<unknown>;
               settings?: {
                 fontSize?: string;
                 highlightSeverity?: boolean;
@@ -264,7 +264,7 @@ export interface CreateDashboardOutput {
             name?: string;
             query: unknown;
             tableSettings?: {
-              columns?: unknown[];
+              columns?: ReadonlyArray<unknown>;
               settings?: {
                 fontSize?: string;
                 highlightSeverity?: boolean;
@@ -295,9 +295,9 @@ export interface CreateDashboardOutput {
               | "Grey"
               | "Brown";
             customUnits?: string;
-            showChart?: unknown;
+            showChart?: boolean | string;
             hideValue?: boolean;
-            chartHeight?: unknown;
+            chartHeight?: string | number;
             errorThreshold?:
               | "Above"
               | "AboveOrEqual"
@@ -341,7 +341,7 @@ export interface CreateDashboardOutput {
             id: string;
             type: "MonitorList";
             name?: string;
-            selectedMonitors: string[];
+            selectedMonitors: ReadonlyArray<string>;
             columns: {
               status: boolean;
               history: boolean;
@@ -354,13 +354,13 @@ export interface CreateDashboardOutput {
             id: string;
             type: "SmartFilter";
             name?: string;
-            filters: unknown[];
+            filters: ReadonlyArray<unknown>;
             logo?: string;
             logoDark?: string;
           }
         | { id: string; type: "Spacer"; name?: string }
-      )[];
-      layout: {
+      >;
+      layout: ReadonlyArray<{
         i: string;
         x: number;
         y: number | null;
@@ -371,7 +371,7 @@ export interface CreateDashboardOutput {
         maxW?: number;
         maxH?: number;
         static?: boolean;
-      }[];
+      }>;
       refreshTime: 15 | 60 | 300;
       schemaVersion: 2;
       against?:

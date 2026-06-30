@@ -16,7 +16,7 @@ export const GetViewInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 // Output Schema
 export interface GetViewOutput {
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;

@@ -8,39 +8,42 @@ export interface CreateRoleInput {
   datasetCapabilities?: Record<
     string,
     {
-      data?: "delete"[];
-      ingest?: "create"[];
-      query?: "read"[];
-      share?: ("create" | "read" | "delete")[];
-      starredQueries?: ("create" | "read" | "update" | "delete")[];
-      trim?: "update"[];
-      vacuum?: "update"[];
-      virtualFields?: ("create" | "read" | "update" | "delete")[];
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
     }
   >;
   description?: string;
-  members?: string[];
+  members?: ReadonlyArray<string>;
   name: string;
   orgCapabilities?: {
-    annotations?: ("create" | "read" | "update" | "delete")[];
-    apiTokens?: ("create" | "read" | "update" | "delete")[];
-    auditLog?: "read"[];
-    billing?: ("read" | "update")[];
-    dashboards?: ("create" | "read" | "update" | "delete")[];
-    datasets?: ("create" | "read" | "update" | "delete")[];
-    endpoints?: ("create" | "read" | "update" | "delete")[];
-    flows?: ("create" | "read" | "update" | "delete")[];
-    integrations?: ("create" | "read" | "update" | "delete")[];
-    monitors?: ("create" | "read" | "update" | "delete")[];
-    notifiers?: ("create" | "read" | "update" | "delete")[];
-    rbac?: ("create" | "read" | "update" | "delete")[];
-    sharedAccessKeys?: ("read" | "update")[];
-    users?: ("create" | "read" | "update" | "delete")[];
-    views?: ("create" | "read" | "update" | "delete")[];
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
   };
   viewCapabilities?: Record<
     string,
-    { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
   >;
 }
 export const CreateRoleInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
@@ -135,39 +138,42 @@ export interface CreateRoleOutput {
   datasetCapabilities?: Record<
     string,
     {
-      data?: "delete"[];
-      ingest?: "create"[];
-      query?: "read"[];
-      share?: ("create" | "read" | "delete")[];
-      starredQueries?: ("create" | "read" | "update" | "delete")[];
-      trim?: "update"[];
-      vacuum?: "update"[];
-      virtualFields?: ("create" | "read" | "update" | "delete")[];
+      data?: ReadonlyArray<"delete">;
+      ingest?: ReadonlyArray<"create">;
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+      starredQueries?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+      trim?: ReadonlyArray<"update">;
+      vacuum?: ReadonlyArray<"update">;
+      virtualFields?: ReadonlyArray<"create" | "read" | "update" | "delete">;
     }
   >;
   description?: string;
-  members?: string[];
+  members?: ReadonlyArray<string>;
   name: string;
   orgCapabilities?: {
-    annotations?: ("create" | "read" | "update" | "delete")[];
-    apiTokens?: ("create" | "read" | "update" | "delete")[];
-    auditLog?: "read"[];
-    billing?: ("read" | "update")[];
-    dashboards?: ("create" | "read" | "update" | "delete")[];
-    datasets?: ("create" | "read" | "update" | "delete")[];
-    endpoints?: ("create" | "read" | "update" | "delete")[];
-    flows?: ("create" | "read" | "update" | "delete")[];
-    integrations?: ("create" | "read" | "update" | "delete")[];
-    monitors?: ("create" | "read" | "update" | "delete")[];
-    notifiers?: ("create" | "read" | "update" | "delete")[];
-    rbac?: ("create" | "read" | "update" | "delete")[];
-    sharedAccessKeys?: ("read" | "update")[];
-    users?: ("create" | "read" | "update" | "delete")[];
-    views?: ("create" | "read" | "update" | "delete")[];
+    annotations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    apiTokens?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    auditLog?: ReadonlyArray<"read">;
+    billing?: ReadonlyArray<"read" | "update">;
+    dashboards?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    datasets?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    endpoints?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    flows?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    integrations?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    monitors?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    notifiers?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    rbac?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    sharedAccessKeys?: ReadonlyArray<"read" | "update">;
+    users?: ReadonlyArray<"create" | "read" | "update" | "delete">;
+    views?: ReadonlyArray<"create" | "read" | "update" | "delete">;
   };
   viewCapabilities?: Record<
     string,
-    { query?: "read"[]; share?: ("create" | "read" | "delete")[] }
+    {
+      query?: ReadonlyArray<"read">;
+      share?: ReadonlyArray<"create" | "read" | "delete">;
+    }
   >;
   id: string;
 }

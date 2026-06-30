@@ -8,9 +8,9 @@ export interface UpdateGroupInput {
   id: string;
   description?: string;
   isManaged?: boolean;
-  members?: string[];
+  members?: ReadonlyArray<string>;
   name: string;
-  roles?: string[];
+  roles?: ReadonlyArray<string>;
 }
 export const UpdateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   id: Schema.String.pipe(T.PathParam()),
@@ -27,9 +27,9 @@ export const UpdateGroupInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface UpdateGroupOutput {
   description?: string;
   isManaged?: boolean;
-  members?: string[];
+  members?: ReadonlyArray<string>;
   name: string;
-  roles?: string[];
+  roles?: ReadonlyArray<string>;
   id: string;
 }
 export const UpdateGroupOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({

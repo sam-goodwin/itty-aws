@@ -14,7 +14,7 @@ export const UpdateMapFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<UpdateMapFieldsInput>;
 
 // Output Schema
-export type UpdateMapFieldsOutput = string[];
+export type UpdateMapFieldsOutput = ReadonlyArray<string>;
 export const UpdateMapFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.String,
 ) as unknown as Schema.Codec<UpdateMapFieldsOutput>;

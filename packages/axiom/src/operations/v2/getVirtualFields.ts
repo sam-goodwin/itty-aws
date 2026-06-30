@@ -13,7 +13,7 @@ export const GetVirtualFieldsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 ) as unknown as Schema.Codec<GetVirtualFieldsInput>;
 
 // Output Schema
-export type GetVirtualFieldsOutput = {
+export type GetVirtualFieldsOutput = ReadonlyArray<{
   dataset: string;
   description?: string;
   expression: string;
@@ -21,7 +21,7 @@ export type GetVirtualFieldsOutput = {
   type?: string;
   unit?: string;
   id: string;
-}[];
+}>;
 export const GetVirtualFieldsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.String,

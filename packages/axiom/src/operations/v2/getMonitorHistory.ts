@@ -20,12 +20,12 @@ export const GetMonitorHistoryInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetMonitorHistoryInput>;
 
 // Output Schema
-export type GetMonitorHistoryOutput = {
+export type GetMonitorHistoryOutput = ReadonlyArray<{
   checkId: string;
   name: string;
   state: "open" | "closed";
   timestamp: string;
-}[];
+}>;
 export const GetMonitorHistoryOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     checkId: Schema.String,

@@ -551,6 +551,84 @@ const Matcher = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
   }),
 ) as unknown as Schema.Codec<Matcher>;
 
+interface ListRulesResponseResultAction {
+  /** Type of supported action. */
+  type: "drop" | "forward" | "worker" | (string & {});
+  value?: string[] | null;
+}
+const ListRulesResponseResultAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Union([
+        Schema.Literals(["drop", "forward", "worker"]),
+        Schema.String,
+      ]),
+      value: Schema.optional(
+        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+      ),
+    }),
+  ) as unknown as Schema.Codec<ListRulesResponseResultAction>;
+
+interface ListRulesResponseResultMatcher {
+  /** Type of matcher. */
+  type: "all" | "literal" | (string & {});
+  /** Field for type matcher. */
+  field?: "to" | null;
+  /** Value for matcher. */
+  value?: string | null;
+}
+const ListRulesResponseResultMatcher =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+    Schema.Struct({
+      type: Schema.Union([Schema.Literals(["all", "literal"]), Schema.String]),
+      field: Schema.optional(Schema.Union([Schema.Literal("to"), Schema.Null])),
+      value: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    }),
+  ) as unknown as Schema.Codec<ListRulesResponseResultMatcher>;
+
+interface ListRulesResponseResult {
+  /** Routing rule identifier. */
+  id?: string | null;
+  /** List actions patterns. */
+  actions?:
+    | {
+        type: "drop" | "forward" | "worker" | (string & {});
+        value?: string[] | null;
+      }[]
+    | null;
+  /** Routing rule status. */
+  enabled?: boolean | null;
+  /** Matching patterns to forward to your actions. */
+  matchers?:
+    | {
+        type: "all" | "literal" | (string & {});
+        field?: "to" | null;
+        value?: string | null;
+      }[]
+    | null;
+  /** Routing rule name. */
+  name?: string | null;
+  /** Priority of the routing rule. */
+  priority?: number | null;
+  /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
+  tag?: string | null;
+}
+const ListRulesResponseResult = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    actions: Schema.optional(
+      Schema.Union([Schema.Array(ListRulesResponseResultAction), Schema.Null]),
+    ),
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    matchers: Schema.optional(
+      Schema.Union([Schema.Array(ListRulesResponseResultMatcher), Schema.Null]),
+    ),
+    name: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    priority: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListRulesResponseResult>;
+
 interface CatchAllMatcher {
   /** Type of matcher. Default is 'all'. */
   type: "all";
@@ -1657,6 +1735,87 @@ export const getRule: API.OperationMethod<
   input: GetRuleRequest,
   output: GetRuleResponse,
   errors: [],
+}));
+
+export interface ListRulesRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+  /** Filter by enabled routing rules. */
+  enabled?: boolean;
+}
+
+export const ListRulesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    enabled: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("enabled")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/zones/{zone_id}/email/routing/rules" }),
+  ),
+) as unknown as Schema.Codec<ListRulesRequest>;
+
+export interface ListRulesResponse {
+  result: {
+    id?: string | null;
+    actions?:
+      | {
+          type: "drop" | "forward" | "worker" | (string & {});
+          value?: string[] | null;
+        }[]
+      | null;
+    enabled?: boolean | null;
+    matchers?:
+      | {
+          type: "all" | "literal" | (string & {});
+          field?: "to" | null;
+          value?: string | null;
+        }[]
+      | null;
+    name?: string | null;
+    priority?: number | null;
+    tag?: string | null;
+  }[];
+  resultInfo?: {
+    count?: number | null;
+    page?: number | null;
+    perPage?: number | null;
+    totalCount?: number | null;
+  } | null;
+}
+
+export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
+  () =>
+    Schema.Struct({
+      result: Schema.Array(ListRulesResponseResult),
+      resultInfo: Schema.optional(
+        Schema.Union([ListAddressesResponseResultInfo, Schema.Null]),
+      ),
+    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+) as unknown as Schema.Codec<ListRulesResponse>;
+
+export type ListRulesError = DefaultErrors;
+
+export const listRules: API.PaginatedOperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
+  Credentials | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListRulesRequest,
+  output: ListRulesResponse,
+  errors: [],
+  pagination: {
+    mode: "page",
+    inputToken: "page",
+    outputToken: "resultInfo.page",
+    items: "result",
+    pageSize: "perPage",
+  } as const,
 }));
 
 export interface CreateRuleRequest {

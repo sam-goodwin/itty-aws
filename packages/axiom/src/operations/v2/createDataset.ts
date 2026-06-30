@@ -49,7 +49,7 @@ export interface CreateDatasetOutput {
     | "otel:traces:v1"
     | "otel:logs:v1"
     | "axiom:events:v1";
-  mapFields?: string[];
+  mapFields?: ReadonlyArray<string>;
   name: string;
   retentionDays?: number;
   sharedByOrg?: string;

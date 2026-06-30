@@ -23,7 +23,7 @@ export const GetStarredQueriesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetStarredQueriesInput>;
 
 // Output Schema
-export type GetStarredQueriesOutput = {
+export type GetStarredQueriesOutput = ReadonlyArray<{
   dataset?: string;
   kind: "apl";
   metadata: Record<string, string>;
@@ -32,11 +32,11 @@ export type GetStarredQueriesOutput = {
     apl: string;
     cursor?: string;
     defaultLimit?: number;
-    defaultOrder?: { desc?: boolean; field?: string }[];
+    defaultOrder?: ReadonlyArray<{ desc?: boolean; field?: string }>;
     endTime?: string;
     includeCursor?: boolean;
     includeCursorField?: boolean;
-    libraries?: string[];
+    libraries?: ReadonlyArray<string>;
     queryOptions?: {
       disableCache?: boolean;
       disableStats?: boolean;
@@ -59,7 +59,7 @@ export type GetStarredQueriesOutput = {
   };
   who: string;
   id: string;
-}[];
+}>;
 export const GetStarredQueriesOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     dataset: Schema.optional(Schema.String),

@@ -11,7 +11,7 @@ export const GetMonitorsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetMonitorsInput>;
 
 // Output Schema
-export type GetMonitorsOutput = {
+export type GetMonitorsOutput = ReadonlyArray<{
   alertOnNoData?: boolean;
   aplQuery?: string;
   columnName?: string;
@@ -24,7 +24,7 @@ export type GetMonitorsOutput = {
   intervalMinutes?: number;
   mplQuery?: string;
   name: string;
-  notifierIds?: string[];
+  notifierIds?: ReadonlyArray<string>;
   notifyByGroup?: boolean;
   notifyEveryRun?: boolean;
   operator?:
@@ -44,7 +44,7 @@ export type GetMonitorsOutput = {
   type: "Threshold" | "MatchEvent" | "AnomalyDetection";
   updatedAt?: string;
   id: string;
-}[];
+}>;
 export const GetMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     alertOnNoData: Schema.optional(Schema.Boolean),

@@ -23,7 +23,7 @@ export const IngestToDatasetInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export interface IngestToDatasetOutput {
   blocksCreated: number;
   failed: number;
-  failures?: { error: string; timestamp: string }[];
+  failures?: ReadonlyArray<{ error: string; timestamp: string }>;
   ingested: number;
   processedBytes: number;
   walLength: number;

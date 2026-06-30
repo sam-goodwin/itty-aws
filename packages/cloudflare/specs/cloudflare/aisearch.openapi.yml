@@ -2067,6 +2067,35 @@ paths:
                               enum:
                                 - sitemap
                                 - crawl
+                                - feed-rss
+                            crawl_options:
+                              type: object
+                              properties:
+                                depth:
+                                  type: number
+                                include_external_links:
+                                  type: boolean
+                                include_subdomains:
+                                  type: boolean
+                                max_age:
+                                  type: number
+                                source:
+                                  type: string
+                                  enum:
+                                    - all
+                                    - sitemaps
+                                    - links
+                            store_options:
+                              type: object
+                              properties:
+                                storage_id:
+                                  type: string
+                                r2_jurisdiction:
+                                  type: string
+                                storage_type:
+                                  type: string
+                              required:
+                                - storage_id
                   nullable: true
                   description: Body param
                 sync_interval:
@@ -2489,6 +2518,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -2930,6 +2988,35 @@ paths:
                               enum:
                                 - sitemap
                                 - crawl
+                                - feed-rss
+                            crawl_options:
+                              type: object
+                              properties:
+                                depth:
+                                  type: number
+                                include_external_links:
+                                  type: boolean
+                                include_subdomains:
+                                  type: boolean
+                                max_age:
+                                  type: number
+                                source:
+                                  type: string
+                                  enum:
+                                    - all
+                                    - sitemaps
+                                    - links
+                            store_options:
+                              type: object
+                              properties:
+                                storage_id:
+                                  type: string
+                                r2_jurisdiction:
+                                  type: string
+                                storage_type:
+                                  type: string
+                              required:
+                                - storage_id
                   nullable: true
                   description: Body param
                 summarization:
@@ -3396,6 +3483,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -3848,6 +3964,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -4295,6 +4440,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -6426,6 +6600,35 @@ paths:
                               enum:
                                 - sitemap
                                 - crawl
+                                - feed-rss
+                            crawl_options:
+                              type: object
+                              properties:
+                                depth:
+                                  type: number
+                                include_external_links:
+                                  type: boolean
+                                include_subdomains:
+                                  type: boolean
+                                max_age:
+                                  type: number
+                                source:
+                                  type: string
+                                  enum:
+                                    - all
+                                    - sitemaps
+                                    - links
+                            store_options:
+                              type: object
+                              properties:
+                                storage_id:
+                                  type: string
+                                r2_jurisdiction:
+                                  type: string
+                                storage_type:
+                                  type: string
+                              required:
+                                - storage_id
                   nullable: true
                   description: Body param
                 sync_interval:
@@ -6848,6 +7051,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -7311,6 +7543,35 @@ paths:
                               enum:
                                 - sitemap
                                 - crawl
+                                - feed-rss
+                            crawl_options:
+                              type: object
+                              properties:
+                                depth:
+                                  type: number
+                                include_external_links:
+                                  type: boolean
+                                include_subdomains:
+                                  type: boolean
+                                max_age:
+                                  type: number
+                                source:
+                                  type: string
+                                  enum:
+                                    - all
+                                    - sitemaps
+                                    - links
+                            store_options:
+                              type: object
+                              properties:
+                                storage_id:
+                                  type: string
+                                r2_jurisdiction:
+                                  type: string
+                                storage_type:
+                                  type: string
+                              required:
+                                - storage_id
                   nullable: true
                   description: Body param
                 summarization:
@@ -7777,6 +8038,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -8247,6 +8537,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string
@@ -8708,6 +9027,35 @@ paths:
                                 enum:
                                   - sitemap
                                   - crawl
+                                  - feed-rss
+                              crawl_options:
+                                type: object
+                                properties:
+                                  depth:
+                                    type: number
+                                  include_external_links:
+                                    type: boolean
+                                  include_subdomains:
+                                    type: boolean
+                                  max_age:
+                                    type: number
+                                  source:
+                                    type: string
+                                    enum:
+                                      - all
+                                      - sitemaps
+                                      - links
+                              store_options:
+                                type: object
+                                properties:
+                                  storage_id:
+                                    type: string
+                                  r2_jurisdiction:
+                                    type: string
+                                  storage_type:
+                                    type: string
+                                required:
+                                  - storage_id
                     nullable: true
                   status:
                     type: string

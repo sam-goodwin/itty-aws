@@ -25,7 +25,7 @@ export interface CreateOrgOutput {
     billingPeriodEnd?: string;
     billingPeriodStart?: string;
     defaultEdgeDeployment?: string;
-    edgeDeployments?: string[];
+    edgeDeployments?: ReadonlyArray<string>;
     expiresAt?: string | null;
     features?: Record<string, boolean>;
     id: string;
@@ -51,7 +51,7 @@ export interface CreateOrgOutput {
       | "comped"
       | "accelerator";
     validFrom?: string;
-    withAuths?: string[];
+    withAuths?: ReadonlyArray<string>;
   };
   metaCreated?: string;
   metaModified?: string;

@@ -9,7 +9,7 @@ export const GetOrgsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 ) as unknown as Schema.Codec<GetOrgsInput>;
 
 // Output Schema
-export type GetOrgsOutput = {
+export type GetOrgsOutput = ReadonlyArray<{
   defaultEdgeDeployment?: string;
   firstFailedPayment?: string;
   id: string;
@@ -19,7 +19,7 @@ export type GetOrgsOutput = {
     billingPeriodEnd?: string;
     billingPeriodStart?: string;
     defaultEdgeDeployment?: string;
-    edgeDeployments?: string[];
+    edgeDeployments?: ReadonlyArray<string>;
     expiresAt?: string | null;
     features?: Record<string, boolean>;
     id: string;
@@ -45,7 +45,7 @@ export type GetOrgsOutput = {
       | "comped"
       | "accelerator";
     validFrom?: string;
-    withAuths?: string[];
+    withAuths?: ReadonlyArray<string>;
   };
   metaCreated?: string;
   metaModified?: string;
@@ -63,7 +63,7 @@ export type GetOrgsOutput = {
   planCreated: string;
   primaryEmail: string;
   role?: string;
-}[];
+}>;
 export const GetOrgsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     defaultEdgeDeployment: Schema.optional(Schema.String),

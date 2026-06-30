@@ -27,7 +27,7 @@ export interface GetMonitorOutput {
   intervalMinutes?: number;
   mplQuery?: string;
   name: string;
-  notifierIds?: string[];
+  notifierIds?: ReadonlyArray<string>;
   notifyByGroup?: boolean;
   notifyEveryRun?: boolean;
   operator?:

@@ -12,7 +12,7 @@ export const GetDatasetsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ) as unknown as Schema.Codec<GetDatasetsInput>;
 
 // Output Schema
-export type GetDatasetsOutput = {
+export type GetDatasetsOutput = ReadonlyArray<{
   canWrite?: boolean;
   created: string;
   description: string;
@@ -24,14 +24,14 @@ export type GetDatasetsOutput = {
     | "otel:traces:v1"
     | "otel:logs:v1"
     | "axiom:events:v1";
-  mapFields?: string[];
+  mapFields?: ReadonlyArray<string>;
   name: string;
   retentionDays?: number;
   sharedByOrg?: string;
   updatedAt: string;
   useRetentionPeriod?: boolean;
   who: string;
-}[];
+}>;
 export const GetDatasetsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     canWrite: Schema.optional(Schema.Boolean),

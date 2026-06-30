@@ -9,14 +9,14 @@ export const GetViewsInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).pipe(
 ) as unknown as Schema.Codec<GetViewsInput>;
 
 // Output Schema
-export type GetViewsOutput = {
+export type GetViewsOutput = ReadonlyArray<{
   aplQuery: string;
-  datasets?: string[];
+  datasets?: ReadonlyArray<string>;
   description?: string;
   name: string;
   sharedByOrg?: string;
   sharedByOrgName?: string;
-}[];
+}>;
 export const GetViewsOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
   Schema.Struct({
     aplQuery: Schema.String,

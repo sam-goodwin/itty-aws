@@ -5,7 +5,7 @@ import { BadRequest, UnprocessableEntity } from "../../errors.ts";
 
 // Input Schema
 export interface CreateAnnotationInput {
-  datasets: string[];
+  datasets: ReadonlyArray<string>;
   description?: string;
   endTime?: string;
   time?: string;
@@ -27,7 +27,7 @@ export const CreateAnnotationInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 // Output Schema
 export interface CreateAnnotationOutput {
-  datasets: string[];
+  datasets: ReadonlyArray<string>;
   description?: string;
   endTime?: string | null;
   id: string;

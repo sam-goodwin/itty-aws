@@ -15,13 +15,13 @@ export const GetFieldsForDatasetInput =
   ) as unknown as Schema.Codec<GetFieldsForDatasetInput>;
 
 // Output Schema
-export type GetFieldsForDatasetOutput = {
+export type GetFieldsForDatasetOutput = ReadonlyArray<{
   description?: string;
   hidden?: boolean;
   name: string;
   type: string;
   unit?: string;
-}[];
+}>;
 export const GetFieldsForDatasetOutput =
   /*@__PURE__*/ /*#__PURE__*/ Schema.Array(
     Schema.Struct({
